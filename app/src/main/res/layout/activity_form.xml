@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="view_model"
+            type="co.edu.unab.mgads.jdcn.storeapp.viewModel.FormActivityVievModel"/>
+    </data>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".entregable1.FormActivity">
+
+    <ImageView
+        android:id="@+id/Form_im_image"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_launcher_background"
+        />
+
+    <TextView
+        android:id="@+id/Form_tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:text="@string/app_name"
+        android:textColor="@color/purple_700"
+        android:textSize="24sp"
+        android:layout_marginVertical="14dp"
+        android:layout_marginHorizontal="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/Form_im_image" />
+
+    <EditText
+        android:id="@+id/Form_et_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/Form_user_name"
+        android:text="@={view_model.user.name}"
+        android:layout_marginTop="18dp"
+        android:layout_marginHorizontal="32dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Form_tv_title" />
+
+    <EditText
+        android:id="@+id/Form_et_document"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/Form_user_document"
+        android:text="@={view_model.user.document}"
+        android:layout_marginTop="18dp"
+        android:layout_marginHorizontal="32dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Form_et_name" />
+
+    <EditText
+        android:id="@+id/Form_et_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/Form_user_email"
+        android:text="@={view_model.user.email}"
+        android:layout_marginTop="18dp"
+        android:layout_marginHorizontal="32dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Form_et_document" />
+
+    <EditText
+        android:id="@+id/Form_et_url"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/Form_user_url"
+        android:text="@={view_model.user.urlpic}"
+        android:layout_marginTop="18dp"
+        android:layout_marginHorizontal="32dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Form_et_email"
+        />
+
+    <EditText
+        android:id="@+id/Form_et_pass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/Form_user_pass"
+        android:text="@={view_model.user.password}"
+        android:layout_marginTop="18dp"
+        android:layout_marginHorizontal="32dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Form_et_url"
+        android:autofillHints="password"
+        android:inputType="textPassword" />
+
+    <Button
+        android:id="@+id/Form_bt_register"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:text="@string/Button_Form"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        app:layout_constraintTop_toBottomOf="@+id/Form_et_pass" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

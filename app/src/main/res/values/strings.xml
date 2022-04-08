@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Store App</string>
+    <string name="Login_user_hint">Escriba su Correo</string>
+    <string name="Login_pass_hint">Escriba su Contraseña</string>
+    <string name="Button_Login">Login</string>
+    <string name="Button_singup">SingUp</string>
+    <string name="Login_user">Juan@gmail.com</string>
+    <string name="Login_pass">123456789</string>
+    <string name="Form_user_name">Escriba su Nombre</string>
+    <string name="Form_user_document">Escriba su Documento</string>
+    <string name="Form_user_email">Escriba su Correo</string>
+    <string name="Form_user_url">Escriba su URL</string>
+    <string name="Form_user_pass">Escriba su Contraseña</string>
+    <string name="Button_Form">Registrar</string>
+    <string name="Txt_Add_Product">Agregar producto</string>
+</resources>
