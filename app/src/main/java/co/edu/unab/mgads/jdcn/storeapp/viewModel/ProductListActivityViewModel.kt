@@ -12,10 +12,10 @@ class ProductListActivityViewModel:ViewModel() {
     fun loadProducts(){
         products.apply {
             clear()
-            add(Product("Monitor","",500000))
-            add(Product("Teclado","",300000))
-            add(Product("Mouse","",200000))
-            add(Product("CPU","",1000000))
+            add(Product("Monitor",500000))
+            add(Product("Teclado",300000))
+            add(Product("Mouse",200000))
+            add(Product("CPU",1000000))
         }
     }
 
