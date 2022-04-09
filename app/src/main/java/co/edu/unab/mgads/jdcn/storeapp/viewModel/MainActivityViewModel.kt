@@ -12,6 +12,6 @@ class MainActivityViewModel: ViewModel() {
     var user:User=User("","","","","")
 
     fun login():Boolean{
-        return user.name=="juan.correo@gmail.com" && user.password=="123456789"
+        return user.email=="juan.correo@gmail.com" && user.password=="123456789"
     }
 }
