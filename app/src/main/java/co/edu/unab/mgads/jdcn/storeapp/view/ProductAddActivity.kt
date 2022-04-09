@@ -17,14 +17,29 @@ class ProductAddActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        val myProduct:Product?=intent.getSerializableExtra("product") as Product
         binding=DataBindingUtil.setContentView(this,R.layout.activity_product_add)
 
         viewModel=ViewModelProvider(this)[ProductAddActivityViewModel::class.java]
+        binding.viewModel=viewModel
+
+        myProduct?.let {
+            binding.FormTvTitleAddproduct.text="Editar ${it.name}"
+            viewModel.product=it
+            binding.FormBtRegister.text="Editar"
+            binding.FormBtRegister.setOnClickListener{
+
+                viewModel.edit()
+                finish()
+            }
+        }?:run {
+            binding.FormBtRegister.setOnClickListener{
+                viewModel.add()
+                finish()
+            }
+        }
 
         binding.viewModel=viewModel
-        binding.FormBtRegister.setOnClickListener{
-            viewModel.add()
-            finish()
-        }
+
     }
 }

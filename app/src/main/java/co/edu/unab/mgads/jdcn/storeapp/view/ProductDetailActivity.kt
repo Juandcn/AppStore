@@ -1,5 +1,6 @@
 package co.edu.unab.mgads.jdcn.storeapp.view
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
@@ -13,16 +14,32 @@ class ProductDetailActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityProductDetailBinding
     private lateinit var viewModel: ProductDetailActivityViewModel
+    private var myProductKey: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val myProduct: Product =intent.getSerializableExtra("product") as Product
+        myProductKey=intent.getIntExtra("product_key",0)
 
         binding=DataBindingUtil.setContentView(this,R.layout.activity_product_detail)
         viewModel=ViewModelProvider(this)[ProductDetailActivityViewModel::class.java]
 
-        viewModel.product=myProduct
+        viewModel.getProductByKey(myProductKey)
         binding.product=viewModel.product
+
+        binding.DetailBtEdit.setOnClickListener {
+           val intentForm= Intent(applicationContext, ProductAddActivity::class.java)
+            intentForm.putExtra("product", viewModel.product)
+            startActivity(intentForm)
+        }
+        binding.DetailBtReturn.setOnClickListener {
+            finish()
+        }
+    }
+
+    override fun onResume() {
+        viewModel.getProductByKey(myProductKey)
+        binding.product=viewModel.product
+        super.onResume()
     }
 }
