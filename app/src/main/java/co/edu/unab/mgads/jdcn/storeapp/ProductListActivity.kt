@@ -2,6 +2,7 @@ package co.edu.unab.mgads.jdcn.storeapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import co.edu.unab.mgads.jdcn.storeapp.databinding.ActivityProductListBinding
@@ -16,12 +17,21 @@ class ProductListActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        var bundle:Bundle? = intent.extras
+        var message:String? = bundle?.getString("message")
+        var data:String? = intent.getStringExtra("data")
+
+        title="$message $data"
         binding = DataBindingUtil.setContentView(this, R.layout.activity_product_list)
         viewModel= ViewModelProvider(this)[ProductListActivityViewModel::class.java]
 
         binding.viewModel=viewModel
         viewModel.loadProducts()
         viewModel.refresData()
+
+        viewModel.adapter.onItemClickListener={
+            Toast.makeText(applicationContext, it.name,Toast.LENGTH_SHORT).show()
+        }
 
     }
 }

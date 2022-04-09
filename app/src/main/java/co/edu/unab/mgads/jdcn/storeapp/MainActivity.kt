@@ -36,7 +36,7 @@ class MainActivity : AppCompatActivity() {
             //Toast.makeText(this,"En la cajita ${binding.LoginEtUser.text}",Toast.LENGTH_SHORT).show()
             //Toast.makeText(this,"En la variable ${binding.user?.name}",Toast.LENGTH_SHORT).show()
 
-            val intentregister = Intent(applicationContext,ListUserActivity::class.java)
+            val intentregister = Intent(applicationContext,ProductListActivity::class.java)
             intentregister.apply {
                 putExtra("message","Hola")
                 putExtra("data", viewModel.user.email)

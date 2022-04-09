@@ -8,14 +8,22 @@ import co.edu.unab.mgads.jdcn.storeapp.databinding.ProductItemBinding
 
 class ProductAdapter(private var products:ArrayList<Product>):RecyclerView.Adapter<ProductAdapter.ProductViewHolder>(){
 
+    var onItemClickListener:((Product)->Unit)?=null
+
     fun refresh(myProduct: ArrayList<Product>){
         products=myProduct
         notifyDataSetChanged()
     }
 
     class ProductViewHolder(private  val binding: ProductItemBinding): RecyclerView.ViewHolder(binding.root){
-        fun bind(myProduct:Product){
+        fun bind(myProduct: Product, onItemClickListener: ((Product) -> Unit)?){
             binding.product=myProduct
+
+            binding.root.setOnClickListener{
+                onItemClickListener?.let {
+                    it(myProduct)
+                }
+            }
         }
     }
 
@@ -26,7 +34,7 @@ class ProductAdapter(private var products:ArrayList<Product>):RecyclerView.Adapt
     }
 
     override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
-        holder.bind(products[position])
+        holder.bind(products[position], onItemClickListener)
     }
 
     override fun getItemCount(): Int= products.size

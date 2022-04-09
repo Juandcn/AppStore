@@ -1,5 +1,6 @@
 package co.edu.unab.mgads.jdcn.storeapp.entregable1
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
@@ -16,6 +17,7 @@ class ListUserActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         binding = DataBindingUtil.setContentView(this, R.layout.activity_list_user)
         viewModel= ViewModelProvider(this)[ListUserViewModel::class.java]
 
