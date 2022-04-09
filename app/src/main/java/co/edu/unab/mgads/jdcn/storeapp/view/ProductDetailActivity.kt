@@ -21,6 +21,8 @@ class ProductDetailActivity : AppCompatActivity() {
 
         binding=DataBindingUtil.setContentView(this,R.layout.activity_product_detail)
         viewModel=ViewModelProvider(this)[ProductDetailActivityViewModel::class.java]
+
+        viewModel.product=myProduct
         binding.product=viewModel.product
     }
 }
