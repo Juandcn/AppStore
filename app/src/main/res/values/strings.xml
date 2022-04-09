@@ -13,4 +13,6 @@
     <string name="Form_user_pass">Escriba su Contraseña</string>
     <string name="Button_Form">Registrar</string>
     <string name="Txt_Add_Product">Agregar producto</string>
+    <string name="Button_Edit">Editar</string>
+    <string name="Button_return">Volver</string>
 </resources>

@@ -23,6 +23,7 @@
                 android:id="@+id/product_im_image"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
+                app:image="@{product.urlImage}"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 android:src="@drawable/ic_launcher_background"

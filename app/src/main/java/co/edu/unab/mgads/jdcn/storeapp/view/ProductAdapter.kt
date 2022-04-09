@@ -17,7 +17,7 @@ class ProductAdapter(private var products:ArrayList<Product>):RecyclerView.Adapt
         notifyDataSetChanged()
     }
 
-    class ProductViewHolder(private  val binding: ProductItemBinding): RecyclerView.ViewHolder(binding.root){
+    class ProductViewHolder(private val binding: ProductItemBinding): RecyclerView.ViewHolder(binding.root){
         fun bind(myProduct: Product, onItemClickListener: ((Product) -> Unit)?){
             binding.product=myProduct
 

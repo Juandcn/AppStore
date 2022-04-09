@@ -81,8 +81,8 @@ class KotlinActivity : AppCompatActivity() {
         showProducts(price=750000, name="Portatil")
 
         //Ejemplo de llamado de CLASES Kotlin
-        val portatil: Product = Product("Portatil Asus",5000000, "No Aplica", ProductStatus.AVAILABLE)
-        val portatil2: Product = Product("Portatil Asus",5000000, "No Aplica", ProductStatus.AVAILABLE)
+        val portatil: Product = Product("Portatil Asus", "", 5000000, "No Aplica", ProductStatus.AVAILABLE)
+        val portatil2: Product = Product("Portatil Asus","",5000000, "No Aplica", ProductStatus.AVAILABLE)
         val result:Boolean = portatil===portatil2
         val(n,p,d,s)=portatil
 
