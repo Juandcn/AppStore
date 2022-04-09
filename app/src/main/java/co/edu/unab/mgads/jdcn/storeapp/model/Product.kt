@@ -1,6 +1,6 @@
-package co.edu.unab.mgads.jdcn.storeapp
+package co.edu.unab.mgads.jdcn.storeapp.model
 
-data class Product(var name:String, val price:Int, var description:String="", val status:ProductStatus=ProductStatus.AVAILABLE) {
+data class Product(var name:String, val price:Int, var description:String="", val status: ProductStatus = ProductStatus.AVAILABLE) {
 
     init {
         println("Producto creado:$name- $price")

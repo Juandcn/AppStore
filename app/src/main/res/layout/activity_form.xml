@@ -10,7 +10,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".entregable1.FormActivity">
+    tools:context=".view.FormActivity">
 
     <ImageView
         android:id="@+id/Form_im_image"

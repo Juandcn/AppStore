@@ -4,7 +4,7 @@
     <data>
         <variable
             name="user"
-            type="co.edu.unab.mgads.jdcn.storeapp.User" />
+            type="co.edu.unab.mgads.jdcn.storeapp.model.User" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

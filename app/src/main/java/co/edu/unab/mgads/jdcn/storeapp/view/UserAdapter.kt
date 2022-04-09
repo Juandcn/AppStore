@@ -1,13 +1,11 @@
-package co.edu.unab.mgads.jdcn.storeapp.entregable1
+package co.edu.unab.mgads.jdcn.storeapp.view
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
-import co.edu.unab.mgads.jdcn.storeapp.Product
 import co.edu.unab.mgads.jdcn.storeapp.R
-import co.edu.unab.mgads.jdcn.storeapp.User
-import co.edu.unab.mgads.jdcn.storeapp.databinding.ProductItemBinding
+import co.edu.unab.mgads.jdcn.storeapp.model.User
 import co.edu.unab.mgads.jdcn.storeapp.databinding.UserDataBinding
 
 class UserAdapter (private var users:ArrayList<User>): RecyclerView.Adapter<UserAdapter.UserViewHolder>(){
@@ -23,7 +21,7 @@ class UserAdapter (private var users:ArrayList<User>): RecyclerView.Adapter<User
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder{
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
         val inflate= LayoutInflater.from(parent.context)
         val binding: UserDataBinding = DataBindingUtil.inflate(inflate,
             R.layout.user_data,parent,false)

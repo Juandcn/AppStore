@@ -1,4 +1,4 @@
-package co.edu.unab.mgads.jdcn.storeapp.entregable1
+package co.edu.unab.mgads.jdcn.storeapp.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

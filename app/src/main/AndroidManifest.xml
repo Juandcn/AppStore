@@ -10,19 +10,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.StoreApp">
         <activity
-            android:name=".entregable1.ListUserActivity"
+            android:name=".view.ListUserActivity"
             android:exported="false" />
         <activity
-            android:name=".ProductListActivity"
+            android:name=".view.ProductListActivity"
             android:exported="false" />
         <activity
-            android:name=".entregable1.FormActivity"
+            android:name=".view.FormActivity"
             android:exported="false" />
         <activity
-            android:name=".KotlinActivity"
+            android:name=".view.KotlinActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".view.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -1,4 +1,4 @@
-package co.edu.unab.mgads.jdcn.storeapp
+package co.edu.unab.mgads.jdcn.storeapp.model
 
 enum class ProductStatus (val value:Int) {
     AVAILABLE(1), SENT(2), SOLD(3);

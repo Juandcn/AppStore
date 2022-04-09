@@ -1,13 +1,13 @@
 package co.edu.unab.mgads.jdcn.storeapp.viewModel
 
 import androidx.lifecycle.ViewModel
-import co.edu.unab.mgads.jdcn.storeapp.Product
-import co.edu.unab.mgads.jdcn.storeapp.ProductAdapter
+import co.edu.unab.mgads.jdcn.storeapp.model.Product
+import co.edu.unab.mgads.jdcn.storeapp.view.ProductAdapter
 
 class ProductListActivityViewModel:ViewModel() {
 
     private val products:ArrayList<Product> = arrayListOf()
-    val adapter:ProductAdapter = ProductAdapter(products)
+    val adapter: ProductAdapter = ProductAdapter(products)
 
     fun loadProducts(){
         products.apply {

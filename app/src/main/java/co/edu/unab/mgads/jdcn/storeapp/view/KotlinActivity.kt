@@ -1,7 +1,12 @@
-package co.edu.unab.mgads.jdcn.storeapp
+package co.edu.unab.mgads.jdcn.storeapp.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import co.edu.unab.mgads.jdcn.storeapp.R
+import co.edu.unab.mgads.jdcn.storeapp.model.Client
+import co.edu.unab.mgads.jdcn.storeapp.model.Product
+import co.edu.unab.mgads.jdcn.storeapp.model.ProductStatus
+import co.edu.unab.mgads.jdcn.storeapp.model.User
 
 class KotlinActivity : AppCompatActivity() {
 
@@ -76,12 +81,12 @@ class KotlinActivity : AppCompatActivity() {
         showProducts(price=750000, name="Portatil")
 
         //Ejemplo de llamado de CLASES Kotlin
-        val portatil:Product = Product("Portatil Asus",5000000, "No Aplica", ProductStatus.AVAILABLE)
-        val portatil2:Product = Product("Portatil Asus",5000000, "No Aplica", ProductStatus.AVAILABLE)
+        val portatil: Product = Product("Portatil Asus",5000000, "No Aplica", ProductStatus.AVAILABLE)
+        val portatil2: Product = Product("Portatil Asus",5000000, "No Aplica", ProductStatus.AVAILABLE)
         val result:Boolean = portatil===portatil2
         val(n,p,d,s)=portatil
 
-        val myClient:User= Client(name="juan Celis", password="123456789", document = "1090477444", urlpic = "www.foto.com", email = "juan@correo.com")
+        val myClient: User = Client(name="juan Celis", password="123456789", document = "1090477444", urlpic = "www.foto.com", email = "juan@correo.com")
         if (myClient is Client){
         }
 

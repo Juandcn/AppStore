@@ -1,14 +1,13 @@
 package co.edu.unab.mgads.jdcn.storeapp.viewModel
 
 import androidx.lifecycle.ViewModel
-import co.edu.unab.mgads.jdcn.storeapp.ProductAdapter
-import co.edu.unab.mgads.jdcn.storeapp.User
-import co.edu.unab.mgads.jdcn.storeapp.entregable1.UserAdapter
+import co.edu.unab.mgads.jdcn.storeapp.model.User
+import co.edu.unab.mgads.jdcn.storeapp.view.UserAdapter
 
 class ListUserViewModel:ViewModel() {
 
     private val users:ArrayList<User> = arrayListOf()
-    var adapter:UserAdapter= UserAdapter(users)
+    var adapter: UserAdapter = UserAdapter(users)
 
     fun loadUsers(){
         users.apply {

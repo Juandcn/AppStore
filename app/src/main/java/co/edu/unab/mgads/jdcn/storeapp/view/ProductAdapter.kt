@@ -1,10 +1,12 @@
-package co.edu.unab.mgads.jdcn.storeapp
+package co.edu.unab.mgads.jdcn.storeapp.view
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
+import co.edu.unab.mgads.jdcn.storeapp.R
 import co.edu.unab.mgads.jdcn.storeapp.databinding.ProductItemBinding
+import co.edu.unab.mgads.jdcn.storeapp.model.Product
 
 class ProductAdapter(private var products:ArrayList<Product>):RecyclerView.Adapter<ProductAdapter.ProductViewHolder>(){
 
@@ -29,7 +31,8 @@ class ProductAdapter(private var products:ArrayList<Product>):RecyclerView.Adapt
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductViewHolder {
         val inflate=LayoutInflater.from(parent.context)
-        val binding:ProductItemBinding = DataBindingUtil.inflate(inflate,R.layout.product_item,parent,false)
+        val binding:ProductItemBinding = DataBindingUtil.inflate(inflate,
+            R.layout.product_item,parent,false)
         return ProductViewHolder(binding)
     }
 

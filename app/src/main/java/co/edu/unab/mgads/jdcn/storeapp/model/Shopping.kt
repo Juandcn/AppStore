@@ -1,4 +1,4 @@
-package co.edu.unab.mgads.jdcn.storeapp
+package co.edu.unab.mgads.jdcn.storeapp.model
 
 interface Shopping {
 

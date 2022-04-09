@@ -1,6 +1,5 @@
-package co.edu.unab.mgads.jdcn.storeapp.entregable1
+package co.edu.unab.mgads.jdcn.storeapp.view
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
@@ -8,7 +7,6 @@ import androidx.lifecycle.ViewModelProvider
 import co.edu.unab.mgads.jdcn.storeapp.R
 import co.edu.unab.mgads.jdcn.storeapp.databinding.ActivityListUserBinding
 import co.edu.unab.mgads.jdcn.storeapp.viewModel.ListUserViewModel
-import co.edu.unab.mgads.jdcn.storeapp.viewModel.ProductListActivityViewModel
 
 class ListUserActivity : AppCompatActivity() {
 

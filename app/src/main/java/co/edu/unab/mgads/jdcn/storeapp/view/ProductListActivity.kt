@@ -1,12 +1,12 @@
-package co.edu.unab.mgads.jdcn.storeapp
+package co.edu.unab.mgads.jdcn.storeapp.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import co.edu.unab.mgads.jdcn.storeapp.R
 import co.edu.unab.mgads.jdcn.storeapp.databinding.ActivityProductListBinding
-import co.edu.unab.mgads.jdcn.storeapp.viewModel.MainActivityViewModel
 import co.edu.unab.mgads.jdcn.storeapp.viewModel.ProductListActivityViewModel
 
 class ProductListActivity : AppCompatActivity() {

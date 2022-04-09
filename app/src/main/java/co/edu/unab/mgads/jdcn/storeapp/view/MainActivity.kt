@@ -1,4 +1,4 @@
-package co.edu.unab.mgads.jdcn.storeapp
+package co.edu.unab.mgads.jdcn.storeapp.view
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -6,10 +6,9 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import co.edu.unab.mgads.jdcn.storeapp.R
 import co.edu.unab.mgads.jdcn.storeapp.viewModel.MainActivityViewModel
 import co.edu.unab.mgads.jdcn.storeapp.databinding.ActivityMainBinding
-import co.edu.unab.mgads.jdcn.storeapp.entregable1.FormActivity
-import co.edu.unab.mgads.jdcn.storeapp.entregable1.ListUserActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -36,22 +35,21 @@ class MainActivity : AppCompatActivity() {
             //Toast.makeText(this,"En la cajita ${binding.LoginEtUser.text}",Toast.LENGTH_SHORT).show()
             //Toast.makeText(this,"En la variable ${binding.user?.name}",Toast.LENGTH_SHORT).show()
 
-            val intentregister = Intent(applicationContext,ProductListActivity::class.java)
-            intentregister.apply {
-                putExtra("message","Hola")
-                putExtra("data", viewModel.user.email)
-            }
-            startActivity(intentregister)
-
             if (viewModel.login()){
                 Toast.makeText(this,"Iniciando sesion....",Toast.LENGTH_SHORT).show()
+                val intentRegister:Intent = Intent(applicationContext, ProductListActivity::class.java)
+                intentRegister.apply {
+                    putExtra("message","Hola")
+                    putExtra("data", viewModel.user.email)
+                }
+                startActivity(intentRegister)
             } else{
                 Toast.makeText(this,"Error....",Toast.LENGTH_SHORT).show()
             }
         }
 
         binding.LoginBtSingup.setOnClickListener {
-            startActivity(Intent(applicationContext,FormActivity::class.java))
+            startActivity(Intent(applicationContext, FormActivity::class.java))
         }
     }
 

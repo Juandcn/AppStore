@@ -1,7 +1,8 @@
-package co.edu.unab.mgads.jdcn.storeapp
+package co.edu.unab.mgads.jdcn.storeapp.model
 
 class Client(cart:ArrayList<Product>?= arrayListOf(), name: String, password: String, email: String,
-             urlpic: String, document:String ): User(name, password, email, urlpic, document), Shopping {
+             urlpic: String, document:String ): User(name, password, email, urlpic, document),
+    Shopping {
 
     /*override fun login(): Boolean {
         return super.login()
