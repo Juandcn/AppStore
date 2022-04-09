@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools">
     <data>
         <variable
-        name="view_model"
-        type="co.edu.unab.mgads.jdcn.storeapp.viewModel.ProductListActivityViewModel" />
+        name="adapter"
+        type="co.edu.unab.mgads.jdcn.storeapp.view.ProductAdapter" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -26,7 +26,7 @@
             android:id="@+id/List_rv_products"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:adapter="@{view_model.adapter}"
+            android:adapter="@{adapter}"
             app:layout_constraintTop_toBottomOf="@id/List_bt_add"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"

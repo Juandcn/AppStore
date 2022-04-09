@@ -1,25 +1,27 @@
 package co.edu.unab.mgads.jdcn.storeapp.viewModel
 
-import androidx.lifecycle.ViewModel
-import co.edu.unab.mgads.jdcn.storeapp.model.Product
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
+import co.edu.unab.mgads.jdcn.storeapp.model.entity.Product
+import co.edu.unab.mgads.jdcn.storeapp.model.repository.ProductRepository
 import co.edu.unab.mgads.jdcn.storeapp.view.ProductAdapter
 
-class ProductListActivityViewModel:ViewModel() {
+class ProductListActivityViewModel(application: Application):AndroidViewModel(application) {
 
-    private val products:ArrayList<Product> = arrayListOf()
-    val adapter: ProductAdapter = ProductAdapter(products)
+    var products: ArrayList<Product> = arrayListOf()
+    private val productRepository:ProductRepository= ProductRepository(application)
+
+    init {
+        loadProducts()
+    }
 
     fun loadProducts(){
-        products.apply {
-            clear()
-            add(Product("Monitor",500000))
-            add(Product("Teclado",300000))
-            add(Product("Mouse",200000))
-            add(Product("CPU",1000000))
-        }
+        products= productRepository.getAllLocal()
     }
 
-    fun refresData(){
-        adapter.refresh(products)
+    fun deleteproduct(myProduct: Product){
+        productRepository.deleteLocal(myProduct)
+        loadProducts()
     }
+
 }

@@ -1,4 +1,6 @@
-package co.edu.unab.mgads.jdcn.storeapp.model
+package co.edu.unab.mgads.jdcn.storeapp.model.entity
+
+import co.edu.unab.mgads.jdcn.storeapp.model.Shopping
 
 class Client(cart:ArrayList<Product>?= arrayListOf(), name: String, password: String, email: String,
              urlpic: String, document:String ): User(name, password, email, urlpic, document),

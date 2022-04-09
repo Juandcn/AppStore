@@ -6,7 +6,7 @@
     <data>
         <variable
             name="product"
-            type="co.edu.unab.mgads.jdcn.storeapp.model.Product" />
+            type="co.edu.unab.mgads.jdcn.storeapp.model.entity.Product" />
     </data>
     <ScrollView
         android:layout_width="match_parent"

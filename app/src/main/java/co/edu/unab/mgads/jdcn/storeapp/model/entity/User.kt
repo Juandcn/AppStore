@@ -1,4 +1,4 @@
-package co.edu.unab.mgads.jdcn.storeapp.model
+package co.edu.unab.mgads.jdcn.storeapp.model.entity
 
 open class User(var name:String, var document:String, var email:String,var urlpic:String, var password:String) {
 

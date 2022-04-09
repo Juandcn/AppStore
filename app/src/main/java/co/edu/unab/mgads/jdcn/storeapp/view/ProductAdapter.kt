@@ -6,11 +6,13 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import co.edu.unab.mgads.jdcn.storeapp.R
 import co.edu.unab.mgads.jdcn.storeapp.databinding.ProductItemBinding
-import co.edu.unab.mgads.jdcn.storeapp.model.Product
+import co.edu.unab.mgads.jdcn.storeapp.model.entity.Product
+import co.edu.unab.mgads.jdcn.storeapp.model.local.dao.ProductDAO
 
 class ProductAdapter(private var products:ArrayList<Product>):RecyclerView.Adapter<ProductAdapter.ProductViewHolder>(){
 
     var onItemClickListener:((Product)->Unit)?=null
+    var onItemLongClickListener:((Product)->Unit)?=null
 
     fun refresh(myProduct: ArrayList<Product>){
         products=myProduct
@@ -18,13 +20,23 @@ class ProductAdapter(private var products:ArrayList<Product>):RecyclerView.Adapt
     }
 
     class ProductViewHolder(private val binding: ProductItemBinding): RecyclerView.ViewHolder(binding.root){
-        fun bind(myProduct: Product, onItemClickListener: ((Product) -> Unit)?){
+        fun bind(myProduct: Product,
+                 onItemClickListener: ((Product) -> Unit)?,
+                 onItemLongClickListener: ((Product) -> Unit)?){
+
             binding.product=myProduct
 
             binding.root.setOnClickListener{
                 onItemClickListener?.let {
                     it(myProduct)
                 }
+            }
+
+            binding.root.setOnLongClickListener{
+                onItemLongClickListener?.let {
+                    it(myProduct)
+                }
+                true
             }
         }
     }
@@ -37,7 +49,7 @@ class ProductAdapter(private var products:ArrayList<Product>):RecyclerView.Adapt
     }
 
     override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
-        holder.bind(products[position], onItemClickListener)
+        holder.bind(products[position], onItemClickListener, onItemLongClickListener)
     }
 
     override fun getItemCount(): Int= products.size

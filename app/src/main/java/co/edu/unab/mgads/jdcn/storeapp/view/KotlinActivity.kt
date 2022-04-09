@@ -3,10 +3,10 @@ package co.edu.unab.mgads.jdcn.storeapp.view
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import co.edu.unab.mgads.jdcn.storeapp.R
-import co.edu.unab.mgads.jdcn.storeapp.model.Client
-import co.edu.unab.mgads.jdcn.storeapp.model.Product
+import co.edu.unab.mgads.jdcn.storeapp.model.entity.Client
+import co.edu.unab.mgads.jdcn.storeapp.model.entity.Product
 import co.edu.unab.mgads.jdcn.storeapp.model.ProductStatus
-import co.edu.unab.mgads.jdcn.storeapp.model.User
+import co.edu.unab.mgads.jdcn.storeapp.model.entity.User
 
 class KotlinActivity : AppCompatActivity() {
 
@@ -81,8 +81,8 @@ class KotlinActivity : AppCompatActivity() {
         showProducts(price=750000, name="Portatil")
 
         //Ejemplo de llamado de CLASES Kotlin
-        val portatil: Product = Product("Portatil Asus", 5000000,"","No Aplica", ProductStatus.AVAILABLE)
-        val portatil2: Product = Product("Portatil Asus",5000000,"","No Aplica", ProductStatus.AVAILABLE)
+        val portatil: Product = Product(name="Portatil Asus",price= 5000000, description="No Aplica", status= ProductStatus.AVAILABLE)
+        val portatil2: Product = Product(name="Portatil Asus",price=5000000, description="No Aplica", status= ProductStatus.AVAILABLE)
         val result:Boolean = portatil===portatil2
         val(n,p,d,s)=portatil
 

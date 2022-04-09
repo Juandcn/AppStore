@@ -14,6 +14,7 @@ class ProductListActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityProductListBinding
     private lateinit var viewModel:ProductListActivityViewModel
+    lateinit var adapter: ProductAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,16 +27,20 @@ class ProductListActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_product_list)
         viewModel= ViewModelProvider(this)[ProductListActivityViewModel::class.java]
 
-        binding.viewModel=viewModel
-        viewModel.loadProducts()
-        viewModel.refresData()
-
-        viewModel.adapter.onItemClickListener={
+        adapter= ProductAdapter(viewModel.products)
+        binding.adapter=adapter
+        adapter.onItemClickListener={
             Toast.makeText(applicationContext, it.name,Toast.LENGTH_SHORT).show()
 
             val intentDetail = Intent(applicationContext, ProductDetailActivity::class.java)
             intentDetail.putExtra("product", it)
             startActivity(intentDetail)
+        }
+
+        adapter.onItemLongClickListener={
+            viewModel.deleteproduct(it)
+            adapter.refresh(viewModel.products)
+            Toast.makeText(applicationContext,"Producto ${it.name} eliminado",Toast.LENGTH_SHORT).show()
         }
 
     }

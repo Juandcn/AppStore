@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import co.edu.unab.mgads.jdcn.storeapp.R
-import co.edu.unab.mgads.jdcn.storeapp.model.User
+import co.edu.unab.mgads.jdcn.storeapp.model.entity.User
 import co.edu.unab.mgads.jdcn.storeapp.databinding.UserDataBinding
 
 class UserAdapter (private var users:ArrayList<User>): RecyclerView.Adapter<UserAdapter.UserViewHolder>(){

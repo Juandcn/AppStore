@@ -5,7 +5,7 @@ Software desarrollado por Juan David Celis
 package co.edu.unab.mgads.jdcn.storeapp.viewModel
 
 import androidx.lifecycle.ViewModel
-import co.edu.unab.mgads.jdcn.storeapp.model.User
+import co.edu.unab.mgads.jdcn.storeapp.model.entity.User
 
 class MainActivityViewModel: ViewModel() {
 
