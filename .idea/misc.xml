@@ -3,8 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Acer/Documents/AndroidStudio Projects/AppStore/app/src/main/res/layout/activity_form.xml" value="0.14010416666666667" />
         <entry key="..\:/Users/Acer/Documents/AndroidStudio Projects/AppStore/app/src/main/res/layout/activity_list_user.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Acer/Documents/AndroidStudio Projects/AppStore/app/src/main/res/layout/activity_main.xml" value="0.14010416666666667" />
+        <entry key="..\:/Users/Acer/Documents/AndroidStudio Projects/AppStore/app/src/main/res/layout/activity_product_add.xml" value="0.14010416666666667" />
         <entry key="..\:/Users/Acer/Documents/AndroidStudio Projects/AppStore/app/src/main/res/layout/activity_product_detail.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Acer/Documents/AndroidStudio Projects/AppStore/app/src/main/res/layout/activity_product_list.xml" value="0.14010416666666667" />
         <entry key="..\:/Users/Acer/Documents/AndroidStudio Projects/AppStore/app/src/main/res/layout/product_item.xml" value="0.20416666666666666" />

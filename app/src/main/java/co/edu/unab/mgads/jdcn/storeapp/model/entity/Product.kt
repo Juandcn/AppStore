@@ -8,8 +8,8 @@ import java.io.Serializable
 
 @Entity(tableName = "Products")
 data class Product(@PrimaryKey(autoGenerate = true) var key:Int?=null,
-                   var name:String, val price:Int,
-                   @ColumnInfo (name="UrlImage") val urlImage:String = "http://nycinventarios.com/wp-content/uploads/2020/05/iconos.png",
+                   var name:String, var price:Int,
+                   @ColumnInfo (name="UrlImage") var urlImage:String = "http://nycinventarios.com/wp-content/uploads/2020/05/iconos.png",
                    var description:String="", val status: ProductStatus = ProductStatus.AVAILABLE
 ) :Serializable {
 

@@ -43,5 +43,15 @@ class ProductListActivity : AppCompatActivity() {
             Toast.makeText(applicationContext,"Producto ${it.name} eliminado",Toast.LENGTH_SHORT).show()
         }
 
+        binding.ListBtAdd.setOnClickListener {
+            startActivity(Intent(applicationContext, ProductAddActivity::class.java))
+        }
     }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.loadProducts()
+        adapter.refresh(viewModel.products)
+    }
+
 }
