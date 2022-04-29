@@ -8,6 +8,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import co.edu.unab.mgads.jdcn.storeapp.R
 import co.edu.unab.mgads.jdcn.storeapp.databinding.ActivityProductListBinding
+import co.edu.unab.mgads.jdcn.storeapp.model.entity.Product
 import co.edu.unab.mgads.jdcn.storeapp.viewModel.ProductListActivityViewModel
 
 class ProductListActivity : AppCompatActivity() {
@@ -27,8 +28,15 @@ class ProductListActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_product_list)
         viewModel= ViewModelProvider(this)[ProductListActivityViewModel::class.java]
 
-        adapter= ProductAdapter(viewModel.products)
+        adapter= ProductAdapter(arrayListOf())
         binding.adapter=adapter
+
+        viewModel.products.observe(this){
+            if (it.isEmpty()){
+                viewModel.loadFakeData()
+            }
+            adapter.refresh(it as ArrayList<Product>)
+        }
         adapter.onItemClickListener={
             Toast.makeText(applicationContext, it.name,Toast.LENGTH_SHORT).show()
 
@@ -39,7 +47,6 @@ class ProductListActivity : AppCompatActivity() {
 
         adapter.onItemLongClickListener={
             viewModel.deleteproduct(it)
-            adapter.refresh(viewModel.products)
             Toast.makeText(applicationContext,"Producto ${it.name} eliminado",Toast.LENGTH_SHORT).show()
         }
 
@@ -48,10 +55,17 @@ class ProductListActivity : AppCompatActivity() {
         }
     }
 
+    private fun loadProducts(){
+        viewModel.products.observe(this){
+            if (it.isEmpty()){
+                viewModel.loadFakeData()
+            }
+            adapter.refresh(it as ArrayList<Product>)
+        }
+    }
     override fun onResume() {
         super.onResume()
         viewModel.loadProducts()
-        adapter.refresh(viewModel.products)
     }
 
 }

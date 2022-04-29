@@ -26,9 +26,8 @@ class ProductAddActivity : AppCompatActivity() {
         myProduct?.let {
             binding.FormTvTitleAddproduct.text="Editar ${it.name}"
             viewModel.product=it
-            binding.FormBtRegister.text="Editar"
+            binding.FormBtRegister.text="Editar Producto"
             binding.FormBtRegister.setOnClickListener{
-
                 viewModel.edit()
                 finish()
             }

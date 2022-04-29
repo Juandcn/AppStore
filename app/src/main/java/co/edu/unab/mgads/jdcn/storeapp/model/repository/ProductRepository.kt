@@ -1,6 +1,7 @@
 package co.edu.unab.mgads.jdcn.storeapp.model.repository
 
 import android.content.Context
+import androidx.lifecycle.LiveData
 import co.edu.unab.mgads.jdcn.storeapp.model.entity.Product
 import co.edu.unab.mgads.jdcn.storeapp.model.local.StoreAppDB
 import co.edu.unab.mgads.jdcn.storeapp.model.local.dao.ProductDAO
@@ -9,46 +10,46 @@ class ProductRepository (myContext: Context) {
 
     private val db:StoreAppDB = StoreAppDB.getInstance(myContext)
     private val productDao:ProductDAO = db.productDAO()
-    private var products:ArrayList<Product> = arrayListOf()
+    lateinit var products:LiveData<List<Product>>
 
-    fun getAllLocal():ArrayList<Product>{
+    init {
         loadAllLocal()
-        return products
     }
 
     fun loadAllLocal(){
-        products= productDao.getAll() as ArrayList<Product>
-        if (products.isEmpty()){
-            loadFakeData()
+        products= productDao.getAll()
+        products.value?.let {
+            if (it.isEmpty()) {
+                loadFakeData()
+            }
         }
     }
 
-    private fun loadFakeData() {
+    fun loadFakeData() {
         productDao.apply {
             add(Product(name="Monitor",price= 500000))
             add(Product(name="Teclado",price= 300000))
             add(Product(name="Mouse",price= 200000))
             add(Product(name="CPU",price= 8000000))
         }
-        loadAllLocal()
     }
 
-    fun getByKeyLocal(key:Int):Product{
+    fun getByKeyLocal(key:Int):LiveData<Product>{
         return productDao.getByKey(key)
     }
 
     fun addLocal(myProduct: Product){
         return productDao.add(myProduct)
-        loadAllLocal()
+
     }
 
     fun updateLocal(myProduct: Product){
         return productDao.update(myProduct)
-        loadAllLocal()
+
     }
 
     fun deleteLocal(myProduct: Product){
         return productDao.delete(myProduct)
-        loadAllLocal()
     }
+
 }

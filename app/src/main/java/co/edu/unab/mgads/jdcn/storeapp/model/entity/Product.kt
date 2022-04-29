@@ -7,7 +7,7 @@ import co.edu.unab.mgads.jdcn.storeapp.model.ProductStatus
 import java.io.Serializable
 
 @Entity(tableName = "Products")
-data class Product(@PrimaryKey(autoGenerate = true) var key:Int?=null,
+class Product(@PrimaryKey(autoGenerate = true) var key:Int?=null,
                    var name:String, var price:Int,
                    @ColumnInfo (name="UrlImage") var urlImage:String = "http://nycinventarios.com/wp-content/uploads/2020/05/iconos.png",
                    var description:String="", val status: ProductStatus = ProductStatus.AVAILABLE

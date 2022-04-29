@@ -2,17 +2,16 @@ package co.edu.unab.mgads.jdcn.storeapp.viewModel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.LiveData
 import co.edu.unab.mgads.jdcn.storeapp.model.entity.Product
 import co.edu.unab.mgads.jdcn.storeapp.model.repository.ProductRepository
 
 class ProductDetailActivityViewModel(application: Application):AndroidViewModel(application) {
 
     private val productRepository:ProductRepository = ProductRepository(application)
-    var product= Product(name="",price=0)
+    lateinit var product:LiveData<Product>
 
-    fun getProductByKey(myProductKey: Int){
-        product=productRepository.getByKeyLocal(myProductKey)
-
+    fun getProductByKey(productKey : Int){
+        product=productRepository.getByKeyLocal(productKey)
     }
 }
