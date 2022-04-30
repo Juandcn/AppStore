@@ -27,13 +27,7 @@ class MainActivity : AppCompatActivity() {
 
         //preferences.edit().remove("login").apply()
         if (preferences.getBoolean("login", false)) {
-            val intentlogin: Intent =
-                Intent(applicationContext, ProductListActivity::class.java)
-            intentlogin.apply {
-                putExtra("message", "Hola")
-                putExtra("data", viewModel.user.email)
-            }
-            startActivity(intentlogin)
+            goToProductList()
         }
 
         binding.viewModel = viewModel
@@ -43,24 +37,45 @@ class MainActivity : AppCompatActivity() {
         //binding.user=myClient
 
         binding.LoginBtLogin.setOnClickListener {
-        //Toast.makeText(this, "Se Oprimio el boton login", Toast.LENGTH_SHORT).show()
-        //Toast.makeText(this,"En la cajita ${binding.LoginEtUser.text}",Toast.LENGTH_SHORT).show()
-        //Toast.makeText(this,"En la variable ${binding.user?.name}",Toast.LENGTH_SHORT).show()
-            if (viewModel.login()) {
-                val preferences: SharedPreferences =
-                    getSharedPreferences("unabApp.pref", MODE_PRIVATE)
-                val editor: SharedPreferences.Editor = preferences.edit()
-                editor.putBoolean("login", true)
-                editor.apply()
-                Toast.makeText(this, "Iniciando sesion....", Toast.LENGTH_SHORT).show()
-            } else {
-                Toast.makeText(this, "Login inválido", Toast.LENGTH_SHORT).show()
+            //Toast.makeText(this, "Se Oprimio el boton login", Toast.LENGTH_SHORT).show()
+            //Toast.makeText(this,"En la cajita ${binding.LoginEtUser.text}",Toast.LENGTH_SHORT).show()
+            //Toast.makeText(this,"En la variable ${binding.user?.name}",Toast.LENGTH_SHORT).show()
+            viewModel.login().observe(this) {
+                it?.let {
+                    loginPreference()
+                } ?: run {
+                    Toast.makeText(this, "Login inválido", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            binding.LoginBtSingup.setOnClickListener {
+                startActivity(Intent(applicationContext, FormActivity::class.java))
             }
         }
+    }
 
-        binding.LoginBtSingup.setOnClickListener {
-            startActivity(Intent(applicationContext, FormActivity::class.java))
+    private fun goToProductList(){
+        val preferences: SharedPreferences =
+            getSharedPreferences("unabApp.pref", MODE_PRIVATE)
+        val intentlogin: Intent =
+            Intent(applicationContext, ProductListActivity::class.java)
+        intentlogin.apply {
+            putExtra("message", "Hola")
+            putExtra("data", preferences.getString("email",""))
         }
+        startActivity(intentlogin)
+        finish()
+    }
+
+    fun loginPreference(){
+        val preferences: SharedPreferences =
+            getSharedPreferences("unabApp.pref", MODE_PRIVATE)
+        val editor: SharedPreferences.Editor = preferences.edit()
+        editor.putBoolean("login", true)
+        editor.putString("email", viewModel.user.email)
+        editor.apply()
+        goToProductList()
+        Toast.makeText(this, "Iniciando sesion....", Toast.LENGTH_SHORT).show()
     }
 
     override fun onRestart() {
