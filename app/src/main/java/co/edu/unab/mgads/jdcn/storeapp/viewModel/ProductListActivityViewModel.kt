@@ -13,7 +13,8 @@ class ProductListActivityViewModel(application: Application):AndroidViewModel(ap
     var products: LiveData<List<Product>> = productRepository.products
 
     fun deleteproduct(myProduct: Product){
-        productRepository.deleteLocal(myProduct)
+        //productRepository.deleteLocal(myProduct)
+        productRepository.deleteFirestore(myProduct)
     }
 
     fun loadFakeData(){
@@ -21,6 +22,7 @@ class ProductListActivityViewModel(application: Application):AndroidViewModel(ap
     }
 
     fun loadProducts(){
-        productRepository.loadAllLocal()
+        //productRepository.loadAllLocal()
+        productRepository.loadAllFirestore()
     }
 }

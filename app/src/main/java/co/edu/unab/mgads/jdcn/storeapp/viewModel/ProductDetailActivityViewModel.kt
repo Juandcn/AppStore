@@ -8,11 +8,17 @@ import co.edu.unab.mgads.jdcn.storeapp.model.repository.ProductRepository
 
 class ProductDetailActivityViewModel(application: Application):AndroidViewModel(application) {
 
-    // Clase LiveData Abril 9
     private val productRepository:ProductRepository = ProductRepository(application)
     lateinit var product:LiveData<Product>
 
     fun getProductByKey(productKey : Int){
         product=productRepository.getByKeyLocal(productKey)
+
+    }
+
+    fun getProductById(myProductId : String){
+        productRepository.getByIdFirestore(myProductId)
+        product=productRepository.product
+
     }
 }

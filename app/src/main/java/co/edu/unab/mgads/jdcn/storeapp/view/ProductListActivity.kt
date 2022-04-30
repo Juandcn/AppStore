@@ -1,8 +1,11 @@
 package co.edu.unab.mgads.jdcn.storeapp.view
 
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
@@ -31,12 +34,15 @@ class ProductListActivity : AppCompatActivity() {
         adapter= ProductAdapter(arrayListOf())
         binding.adapter=adapter
 
-        viewModel.products.observe(this){
-            if (it.isEmpty()){
-                viewModel.loadFakeData()
-            }
-            adapter.refresh(it as ArrayList<Product>)
-        }
+        loadProducts()
+
+//        viewModel.products.observe(this){
+//            if (it.isEmpty()){
+//                viewModel.loadFakeData()
+//            }
+//            adapter.refresh(it as ArrayList<Product>)
+//        }
+
         adapter.onItemClickListener={
             Toast.makeText(applicationContext, it.name,Toast.LENGTH_SHORT).show()
 
@@ -66,6 +72,31 @@ class ProductListActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         viewModel.loadProducts()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_main,menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            R.id.mi_logout ->{
+                logout()
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    private fun logout(){
+        val preferences:SharedPreferences=getSharedPreferences("store_app-pref", MODE_PRIVATE)
+        val editor=preferences.edit()
+        editor.clear()
+        editor.apply()
+
+        val intent=Intent(applicationContext, MainActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+        startActivity(intent)
     }
 
 }

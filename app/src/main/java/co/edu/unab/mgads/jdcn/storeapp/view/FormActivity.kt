@@ -1,7 +1,10 @@
 package co.edu.unab.mgads.jdcn.storeapp.view
 
+import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
@@ -16,16 +19,41 @@ class FormActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_form)
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_form)
         viewModel= ViewModelProvider(this)[FormActivityVievModel::class.java]
 
         binding.viewModel=viewModel
         binding.FormBtRegister.setOnClickListener {
-            var text=viewModel.registro()
-            Toast.makeText(this, text, Toast.LENGTH_SHORT).show()
+            viewModel.SingUp().observe(this) {}
+            it?.let {
+                login(it)
+            } ?: run {
+                Toast.makeText(applicationContext, "Error al crear el Usuario", Toast.LENGTH_SHORT)
+                    .show()
+            }
         }
+
+        binding.FormBtVolver.setOnClickListener {
+         finish()
+        }
+    }
+
+    private fun login (it: View){
+        val preferences: SharedPreferences =
+            getSharedPreferences("unabApp.pref", MODE_PRIVATE)
+        val editor: SharedPreferences.Editor = preferences.edit()
+        editor.putBoolean("login", true)
+        editor.apply()
+
+        val intentlogin: Intent =
+            Intent(applicationContext, ProductListActivity::class.java)
+        intentlogin.apply {
+            putExtra("message", "Hola")
+            putExtra("data", viewModel.user.email)
+        }
+        startActivity(intentlogin)
+        Toast.makeText(this, "Iniciando sesion....", Toast.LENGTH_SHORT).show()
     }
 
     override fun onRestart() {

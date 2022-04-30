@@ -15,6 +15,7 @@ class ProductDetailActivity : AppCompatActivity() {
     private lateinit var binding: ActivityProductDetailBinding
     private lateinit var viewModel: ProductDetailActivityViewModel
     private var myProductKey: Int = 0
+    private var myProductId: String? = ""
     private var productKey = 0
 
 
@@ -23,19 +24,21 @@ class ProductDetailActivity : AppCompatActivity() {
 
         myProductKey=intent.getIntExtra("product_key",0)
         productKey = intent.getIntExtra("productKey",0)
+        myProductId = intent.getStringExtra("product_id")
 
         binding=DataBindingUtil.setContentView(this,R.layout.activity_product_detail)
         viewModel=ViewModelProvider(this)[ProductDetailActivityViewModel::class.java]
 
+        //viewModel.getProductByKey(myProductKey)
+        myProductId?.let {viewModel.getProductById(it)}
+
         viewModel.product.observe(this){
             it?.let {
                 binding.product=it
-                productKey = it.key!!
+            }?:run {
+                binding.product = Product(name = "", price = 0, description = "")
             }
         }
-
-        viewModel.getProductByKey(myProductKey)
-        binding.product = Product(name = "", price = 0, description = "")
 
         binding.DetailBtEdit.setOnClickListener {
            val intentForm= Intent(applicationContext, ProductAddActivity::class.java)
@@ -50,7 +53,8 @@ class ProductDetailActivity : AppCompatActivity() {
     }
 
     override fun onResume() {
-        viewModel.getProductByKey(myProductKey)
+        //viewModel.getProductByKey(myProductKey)
+        myProductId?.let {viewModel.getProductById(it)}
         super.onResume()
     }
 }

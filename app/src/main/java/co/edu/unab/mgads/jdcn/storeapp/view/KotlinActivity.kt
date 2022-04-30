@@ -84,7 +84,7 @@ class KotlinActivity : AppCompatActivity() {
         val portatil: Product = Product(name="Portatil Asus",price= 5000000, description="No Aplica", status= ProductStatus.AVAILABLE)
         val portatil2: Product = Product(name="Portatil Asus",price=5000000, description="No Aplica", status= ProductStatus.AVAILABLE)
         val result:Boolean = portatil===portatil2
-        val(n,p,d,s)=portatil
+        //val(n,p,d,s)=portatil
 
         val myClient: User = Client(name="juan Celis", password="123456789", document = "1090477444", urlpic = "www.foto.com", email = "juan@correo.com")
         if (myClient is Client){
