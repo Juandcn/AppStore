@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
 
         binding.viewModel = viewModel
         //binding.LoginTvTitle.text="Modificado por codigo"
-        binding.title = "Modificado por codigo"
+        //binding.title = "Modificado por codigo"
         //val myClient:User = Client(name="juan Celis", password="123456789", document = "1090477444", urlpic = "www.foto.com", email = "juan@correo.com")
         //binding.user=myClient
 
@@ -47,7 +47,6 @@ class MainActivity : AppCompatActivity() {
                     Toast.makeText(this, "Login inválido", Toast.LENGTH_SHORT).show()
                 }
             }
-
             binding.LoginBtSingup.setOnClickListener {
                 startActivity(Intent(applicationContext, FormActivity::class.java))
             }
@@ -57,12 +56,11 @@ class MainActivity : AppCompatActivity() {
     private fun goToProductList(){
         val preferences: SharedPreferences =
             getSharedPreferences("unabApp.pref", MODE_PRIVATE)
-        val intentlogin: Intent =
-            Intent(applicationContext, ProductListActivity::class.java)
-        intentlogin.apply {
-            putExtra("message", "Hola")
-            putExtra("data", preferences.getString("email",""))
-        }
+        val intentlogin: Intent = Intent(applicationContext, ProductListActivity::class.java)
+        //intentlogin.apply {
+        //    putExtra("message", "Hola")
+        //    putExtra("data", preferences.getString("email",""))
+        //}
         startActivity(intentlogin)
         finish()
     }

@@ -10,7 +10,7 @@ open class User(
     var document:String="",
     var email:String="",
     @JvmField @PropertyName("Url_Photo")
-    var urlpic:String="") {
+    var urlpic:String="https://images.vexels.com/media/users/3/135246/isolated/preview/df491bf444acfa945630c22389140d4a-icono-de-sombra-de-usuario.png") {
 
     /*open fun login():Boolean{
         return name=="juancorreo@gmail.com" && password=="12456789"

@@ -5,8 +5,8 @@
 
     <data>
         <variable
-            name="view_model"
-            type="co.edu.unab.mgads.jdcn.storeapp.viewModel.ProductAddActivityViewModel" />
+            name="product"
+            type="co.edu.unab.mgads.jdcn.storeapp.model.entity.Product" />
         <import type="co.edu.unab.mgads.jdcn.storeapp.utils.BindingUtilsKt"/>
     </data>
 
@@ -16,7 +16,8 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:context=".view.ProductAddActivity">
+            tools:context=".view.ProductAddActivity"
+            android:layout_margin="8dp">
 
             <TextView
                 android:id="@+id/Form_tv_title_addproduct"
@@ -37,6 +38,7 @@
                 android:layout_width="300dp"
                 android:layout_height="100dp"
                 android:scaleType="centerCrop"
+                app:image="@{product.urlImage}"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:srcCompat="@drawable/ic_launcher_background"
@@ -44,17 +46,37 @@
                 app:layout_constraintTop_toBottomOf="@id/Form_tv_title_addproduct"
                 />
 
+            <ImageButton
+                android:id="@+id/Form_im_imagen_camera_addproduct"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@android:drawable/ic_menu_camera"
+                app:layout_constraintTop_toBottomOf="@id/Form_im_imagen_addproduct"
+                app:layout_constraintLeft_toLeftOf="@id/Form_im_imagen_addproduct"
+                android:layout_marginTop="10dp"
+                />
+
+            <ImageButton
+                android:id="@+id/Form_im_imagen_gallery_addproduct"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@android:drawable/ic_menu_gallery"
+                app:layout_constraintTop_toBottomOf="@id/Form_im_imagen_addproduct"
+                app:layout_constraintRight_toRightOf="@id/Form_im_imagen_addproduct"
+                android:layout_marginTop="10dp"
+                />
+
             <EditText
                 android:id="@+id/Form_et_name_addproduct"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/Form_user_name"
-                android:text="@={view_model.product.name}"
+                android:text="@={product.name}"
                 android:layout_marginTop="18dp"
                 android:layout_marginHorizontal="32dp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/Form_im_imagen_addproduct" />
+                app:layout_constraintTop_toBottomOf="@+id/Form_im_imagen_camera_addproduct" />
 
             <EditText
                 android:id="@+id/Form_et_price_addProduct"
@@ -62,7 +84,7 @@
                 android:layout_height="wrap_content"
                 android:hint="Precio"
                 android:inputType="number"
-                android:text="@={BindingUtilsKt.intToString(view_model.product.price)}"
+                android:text="@={BindingUtilsKt.intToString(product.price)}"
                 android:layout_marginTop="18dp"
                 android:layout_marginHorizontal="32dp"
                 app:layout_constraintLeft_toLeftOf="parent"
@@ -75,7 +97,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/Form_user_url"
-                android:text="@={view_model.product.urlImage}"
+                android:text="@={product.urlImage}"
                 android:layout_marginTop="18dp"
                 android:layout_marginHorizontal="32dp"
                 android:inputType="textUri"
@@ -88,7 +110,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Descripcion"
-                android:text="@={view_model.product.description}"
+                android:text="@={product.description}"
                 android:layout_marginTop="18dp"
                 android:layout_marginHorizontal="32dp"
                 app:layout_constraintLeft_toLeftOf="parent"
@@ -96,14 +118,24 @@
                 app:layout_constraintTop_toBottomOf="@id/Form_et_urlImagen_addProduct" />
 
             <Button
+                android:layout_marginTop="30dp"
                 android:id="@+id/Form_bt_register"
-                android:layout_width="match_parent"
+                android:layout_width="180dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="28dp"
                 android:text="@string/Button_Form"
-                android:layout_marginStart="50dp"
-                android:layout_marginEnd="50dp"
-                app:layout_constraintTop_toBottomOf="@+id/Form_et_description_addProduct" />
+                app:layout_constraintTop_toBottomOf="@+id/Form_et_description_addProduct"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/Form_bt_return"/>
+
+            <Button
+                android:layout_marginTop="30dp"
+                android:id="@+id/Form_bt_return"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:text="@string/Return"
+                app:layout_constraintTop_toBottomOf="@id/Form_et_description_addProduct"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/Form_bt_register"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

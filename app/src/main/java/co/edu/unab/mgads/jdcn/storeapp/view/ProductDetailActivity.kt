@@ -32,11 +32,12 @@ class ProductDetailActivity : AppCompatActivity() {
         //viewModel.getProductByKey(myProductKey)
         myProductId?.let {viewModel.getProductById(it)}
 
+        binding.product = Product()
         viewModel.product.observe(this){
             it?.let {
                 binding.product=it
             }?:run {
-                binding.product = Product(name = "", price = 0, description = "")
+                binding.product = Product()
             }
         }
 

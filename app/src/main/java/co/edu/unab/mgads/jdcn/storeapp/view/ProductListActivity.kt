@@ -47,12 +47,15 @@ class ProductListActivity : AppCompatActivity() {
             Toast.makeText(applicationContext, it.name,Toast.LENGTH_SHORT).show()
 
             val intentDetail = Intent(applicationContext, ProductDetailActivity::class.java)
-            intentDetail.putExtra("product", it)
+            //intentDetail.putExtra("product", it)
+            intentDetail.putExtra("productKey",it.key)
+            intentDetail.putExtra("productId",it.id)
             startActivity(intentDetail)
         }
 
         adapter.onItemLongClickListener={
-            viewModel.deleteproduct(it)
+            viewModel.deleteproduct(it).observe(this){
+            }
             Toast.makeText(applicationContext,"Producto ${it.name} eliminado",Toast.LENGTH_SHORT).show()
         }
 
@@ -63,15 +66,14 @@ class ProductListActivity : AppCompatActivity() {
 
     private fun loadProducts(){
         viewModel.products.observe(this){
-            if (it.isEmpty()){
-                viewModel.loadFakeData()
-            }
-            adapter.refresh(it as ArrayList<Product>)
+           //if (it.isEmpty()){
+           //     viewModel.loadFakeData()
+           //}
+           adapter.refresh(it as ArrayList<Product>)
         }
     }
     override fun onResume() {
         super.onResume()
-        viewModel.loadProducts()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

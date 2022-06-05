@@ -16,4 +16,5 @@
     <string name="Button_Edit">Editar</string>
     <string name="Button_return">Volver</string>
     <string name="mi_logout">Salir</string>
+    <string name="Return">Volver</string>
 </resources>

@@ -1,7 +1,6 @@
 package co.edu.unab.mgads.jdcn.storeapp.model.local.dao
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.room.*
 import co.edu.unab.mgads.jdcn.storeapp.model.entity.Product
 

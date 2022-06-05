@@ -22,5 +22,4 @@ fun stringtoInt(value:String):Int{
         return 0
     }
     return Integer.parseInt(value)
-
 }

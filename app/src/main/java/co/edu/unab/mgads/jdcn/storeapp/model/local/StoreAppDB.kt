@@ -11,8 +11,9 @@ import co.edu.unab.mgads.jdcn.storeapp.model.local.dao.ProductDAO
 abstract class StoreAppDB:RoomDatabase() {
 
     abstract fun productDAO():ProductDAO
-    companion object {
 
+    companion object {
+        @Volatile
         private var INSTANCE:StoreAppDB? = null
         fun getInstance(myContext:Context):StoreAppDB{
             var instance= INSTANCE

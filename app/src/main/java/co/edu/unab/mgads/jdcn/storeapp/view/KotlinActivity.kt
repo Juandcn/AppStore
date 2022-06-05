@@ -8,6 +8,7 @@ import co.edu.unab.mgads.jdcn.storeapp.model.entity.Product
 import co.edu.unab.mgads.jdcn.storeapp.model.ProductStatus
 import co.edu.unab.mgads.jdcn.storeapp.model.entity.User
 
+//Ejemplo de Programacion en Kotlin
 class KotlinActivity : AppCompatActivity() {
 
     lateinit var urlImage:String

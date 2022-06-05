@@ -23,15 +23,12 @@ class ProductAdapter(private var products:ArrayList<Product>):RecyclerView.Adapt
         fun bind(myProduct: Product,
                  onItemClickListener: ((Product) -> Unit)?,
                  onItemLongClickListener: ((Product) -> Unit)?){
-
             binding.product=myProduct
-
             binding.root.setOnClickListener{
                 onItemClickListener?.let {
                     it(myProduct)
                 }
             }
-
             binding.root.setOnLongClickListener{
                 onItemLongClickListener?.let {
                     it(myProduct)
