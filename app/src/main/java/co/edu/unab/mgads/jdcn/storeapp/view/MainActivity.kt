@@ -47,11 +47,13 @@ class MainActivity : AppCompatActivity() {
                     Toast.makeText(this, "Login inválido", Toast.LENGTH_SHORT).show()
                 }
             }
+        }
+
             binding.LoginBtSingup.setOnClickListener {
                 startActivity(Intent(applicationContext, FormActivity::class.java))
             }
         }
-    }
+
 
     private fun goToProductList(){
         val preferences: SharedPreferences =

@@ -46,8 +46,8 @@ class UserRepository {
         uid?.let { id ->
             firestore.collection(USER_COLLECTION).document(id).get().addOnSuccessListener { response ->
                 val user:User?=response.toObject(User::class.java)
-                user?.let{
-                    it.id=id
+                user?.let{ userInside->
+                    userInside.id=id
                     userObserver.value=user
                 }
             }.addOnFailureListener{
