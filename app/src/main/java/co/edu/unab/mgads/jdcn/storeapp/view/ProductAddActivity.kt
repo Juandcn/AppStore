@@ -113,10 +113,7 @@ class ProductAddActivity : AppCompatActivity() {
 
                 photoFile?.let {
                     photoUri = FileProvider.getUriForFile(
-                        applicationContext,
-                        "com.sebastianjoya.unabapp.fileprovider",
-                        photoFile
-                    )
+                        applicationContext,"co.edu.unab.mgads.jdcn.storeapp.fileprovider",photoFile)
                     cameraItem.putExtra(MediaStore.EXTRA_OUTPUT, photoUri)
                     resultCamera.launch(cameraItem)
                 }
